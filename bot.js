@@ -24,7 +24,7 @@ const CREATOR_INFO = {
 const SUDO_FILE_PATH = path.join(__dirname, 'sudo_users.json');
 
 // Bot owner configuration
-const BOT_OWNER = '2348124269148@s.whatsapp.net';
+const BOT_OWNER = '2349116896136@s.whatsapp.net';
 
 // Load sudo users from JSON file
 function loadSudoUsers() {
