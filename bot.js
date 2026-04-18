@@ -4553,12 +4553,14 @@ ${Math.floor(Date.now() / 1000)}`);
 
 // QR Code Generator
 // QR Code Generator
+
 async function handleQrcode(sock, msg, text) {
-    if (!text) return await reply(sock, msg, 'Usage: !qrcode <text>');
-    try {
-        const qr = await QRCode.toDataURL(text);
-        await reply(sock, msg, 'Here is your QR code (base64 image):\n' + qr);
-    } catch {
-        await reply(sock, msg, '❌ Error generating QR code.');
-    }
+    if (!text) return reply(sock, msg, 'Usage: !qrcode <text>');
+
+    const buffer = await QRCode.toBuffer(text);
+
+    await sock.sendMessage(msg.key.remoteJid, {
+        image: buffer,
+        caption: '📱 Scan your QR code'
+    });
 }
